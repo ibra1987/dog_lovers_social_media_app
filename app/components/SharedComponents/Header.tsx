@@ -5,7 +5,7 @@ import LargeScreenMenu from './LargeScreenMenu'
 
 function Header() {
   return (
-    <header className='w-full flex justify-between px-8 py-4 border-b   font-bold tracking-wider'>
+    <header className='w-full flex justify-between px-8 py-4  bg-white text-gray-400 font-medium tracking-wider'>
        <SiteIdentity/>
        <SmallScreenMenu/>
        <LargeScreenMenu/>

@@ -1,31 +1,27 @@
 export const menulinks =[
     {
-        name:"home",
+        name:"Home",
         path:"/"
     },
     {
-        name:"login",
+        name:"Login",
         path:"/login"
     },
     {
-        name:"join",
+        name:"Sign Up",
         path:"/signup"
-    },
-    {
-        name:"about",
-        path:"/about"
     }
 ];
 
 
 export const footerLinks = [
     {
-        name:"about",
+        name:"About",
         path:"/about",
         group:"site_links"
     },
     {
-        name:"contact",
+        name:"Contact",
         path:"/contact",
         group:"site_links"
     },

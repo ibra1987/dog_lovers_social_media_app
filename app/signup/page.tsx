@@ -3,7 +3,7 @@ import SignUp from "./components/SignUp";
 
 function page() {
   return (
-    <div className="w-full  flex justify-center items-center bg-blue-400 ">
+    <div className="w-full  flex justify-center items-center  ">
       {/* <div className="hidden md:flex h-full overflow-y-hidden justify-start  items-start w-1/2 relative">
         <div className="absolute top-0 z-10 left-0 bg-opacity-40 w-full h-full bg-blue-400"></div>
         <Image

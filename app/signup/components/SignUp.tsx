@@ -3,7 +3,7 @@ import InputComponent from "@/app/components/SharedComponents/InputComponent"
 import { useState } from "react";
 import { UserSchema } from "@/zodScheams";
 
-const inputClass ="w-full flex  p-2 outline-none  border border-gray-400 border-2"
+const inputClass ="w-full flex  p-2 outline-none  border border-gray-200 border-2"
 const labelClass = " w-full mb-2  text-left text-black font-medium"
 const inputDivClass = "w-full  p-2 flex flex-col  justify-center  items-center  "
 import { RegisterUser } from "@/http/users";
@@ -125,7 +125,7 @@ function SignUp() {
 
   
   return (
-<div className="w-full md:w-4/5 rounded p-4 flex flex-col justify-center  bg-white my-10 shadow-lg border">
+<div className="w-full md:w-4/5 rounded p-4 flex flex-col justify-center  my-10  border">
         <h1 className="text-4xl text-blue-400 text-center font-extrabold ">
           Create a new account
         </h1>

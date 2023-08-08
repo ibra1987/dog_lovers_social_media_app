@@ -18,7 +18,7 @@ function page() {
         <h1 className="text-4xl text-blue-400 font-extrabold mt-20 mb-6 md:my-6">
           Sign In To Your Account
         </h1>
-        <div className="w-full md:w-4/5 rounded p-4  shadow-lg border py-10">
+        <div className="w-full md:w-4/5 rounded p-4 bg-[#fdfdfd] shadow-md border py-10">
           <Login />
           <div className="font-medium text-gray-600">
             Don't have an account? Sign Up{" "}

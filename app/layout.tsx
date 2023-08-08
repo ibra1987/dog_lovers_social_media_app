@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={poppins.className} style={{fontWeight:100}}>
-        <main className='w-full lex flex-col mx-auto    justify-between items-center bg-gray-50  text-gray-600 '>
+        <main className='w-full lex flex-col mx-auto bg-[#F9F9F9]    justify-between items-center   text-gray-600 '>
           <Header/>
           <div className='w-full h-full flex flex-grow flex-col justify-between items-center'>
           {children}
