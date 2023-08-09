@@ -1,4 +1,4 @@
-import jwt, {  VerifyErrors } from "jsonwebtoken";
+import jwt, {  JwtPayload, VerifyErrors } from "jsonwebtoken";
 
 export async function POST(request: Request) {
   const token  = await request.json() ;
@@ -10,27 +10,37 @@ export async function POST(request: Request) {
       { status: 400 }
     );
   }
+try {
   const secret = process.env.JWT_SECRET ? process.env.JWT_SECRET : "";
-  jwt.verify(token.token, secret, (err: VerifyErrors | null, decoded: object | undefined) => {
-    let response: Response;
 
+  const result = jwt.verify(token.token, secret, (err: VerifyErrors | null, decoded: string | JwtPayload | undefined) => {
+   
     if (err) {
-        response = new Response(JSON.stringify({
-            token: false,
-            message: err.message
-        }));
-    } else if (decoded) {
-        response = new Response(JSON.stringify({
-            token: true
-        }));
-    } else {
-        response = new Response(JSON.stringify({
-            token: false,
-            message: 'Token verification failed'
-        }));
-    }
+       return {
+        msg:err.message,
+        isValid:false
+       }
+        
 
-    return response;
+    } else if (decoded) {
+      return  {
+             isValid:true
+      }
+    } 
+
 });
+
+
+
+return new Response(JSON.stringify({
+  result
+}))
+
+
+} catch (error) {
+  new Response(JSON.stringify({
+    token: false,
+    message: 'There was an error. Failed to verify the token'
+}));}
 
 }

@@ -52,7 +52,7 @@ const prisma = new PrismaClient()
    sgMail.setClient(new Client())
    sgMail.setApiKey(sendgridkey)
    sgMail.setSubstitutionWrappers("{{", "}}")
-   const emailVerificationLink = `https://imagebgremover.io/verify-account/${emailToken}`
+   const emailVerificationLink = `http://localhost:3000/verify-account/${emailToken}`
    const send = await sgMail.send({
     from: "brahim.driouch@imagebgremover.io",
     to: `${addedUser.fullName} <${addedUser.email}>`,
