@@ -6,7 +6,7 @@ import { useState } from "react";
 import {useRouter} from 'next/navigation'
 import { Credentials } from "@/types";
 import { SingnInSchema } from "@/zodScheams";
-import { error } from "console";
+import { useAuthState } from "@/state";
 
 const inputClass ="w-full flex  p-2 outline-none  border border-gray-400 border-2"
 const labelClass = " w-full mb-2  text-left text-black font-medium"
@@ -16,6 +16,7 @@ const inputDivClass = "w-full  p-2 flex flex-col  justify-center  items-center  
 
 
   function Login() {
+    const authState = useAuthState()
     const router = useRouter()
   const params = useSearchParams();
   const [loading,setLoading]=useState(false)
@@ -78,6 +79,7 @@ const inputDivClass = "w-full  p-2 flex flex-col  justify-center  items-center  
         const  response = await LoginUser(user)
         const data = response.data ||{}
         if(data?.success){
+          authState.setUser(data.loggedInUser)
             router.push('/feed')
         }
         

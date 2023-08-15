@@ -59,9 +59,11 @@ const prisma = new PrismaClient()
     const secret = process.env.JWT_SECRET ? process.env.JWT_SECRET : ""
     // validation passed => set session cookie
   const sessionToken = await jwt.sign({userId:user.id},secret,{expiresIn:'1h'})
+  const {password,...loggedInUser}=user
   cookies().set('accessToken',sessionToken)
   return new Response(JSON.stringify({
     success:true,
+    loggedInUser
 
   }))
     

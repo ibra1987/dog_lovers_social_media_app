@@ -18,11 +18,20 @@ export type inputProps={
     handler:(e:React.ChangeEvent<HTMLInputElement>)=>void
 
 }
-
+ export type Post = {
+    postContent:string,
+    postImages?:File[],
+    postVideos?:File[],
+    user:string
+ }
 
 export type User = z.infer<typeof UserSchema>
 export type Credentials = z.infer<typeof SingnInSchema>
-
+export type loggedInUser = {
+    fullName:string,
+    email:string,
+    id:number
+}
 export type CreatedResponse<T> ={
     status:number,
     success:boolean,
