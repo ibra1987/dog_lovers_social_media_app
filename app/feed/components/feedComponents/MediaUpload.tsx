@@ -3,12 +3,11 @@ import { FaImage, FaPlay, FaVideo } from "react-icons/fa";
 function MediaUpload({
   handler,
   title,
-  type,
+
   name,
 }: {
   handler: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   title: string;
-  type: string;
   name: string;
 }) {
   return (
@@ -17,18 +16,13 @@ function MediaUpload({
         htmlFor={"userUploads"}
         className="flex justify-start  items-center space-x-2 cursor-pointer"
       >
-        {type === "image" && (
+        
+     
           <>
             <FaImage className="text-emerald-300 " />{" "}
             <span className="text-sm font-light">{title} </span>
           </>
-        )}
-        {type === "video" && (
-          <>
-            <FaVideo className="text-emerald-300 " />{" "}
-            <span className="text-sm font-light">{title} </span>
-          </>
-        )}
+      
       </label>
       <input
         id={'userUploads'}

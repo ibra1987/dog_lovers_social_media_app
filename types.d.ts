@@ -20,8 +20,7 @@ export type inputProps={
 }
  export type Post = {
     postContent:string,
-    postImages?:File[],
-    postVideos?:File[],
+    postMedia:File[],
     user:string
  }
 
