@@ -1,3 +1,4 @@
+import tokenVerifier from "@/helpers/tokenVerifier";
 import jwt, {  JwtPayload, VerifyErrors } from "jsonwebtoken";
 
 export async function POST(request: Request) {
@@ -11,26 +12,8 @@ export async function POST(request: Request) {
     );
   }
 try {
-  const secret = process.env.JWT_SECRET ? process.env.JWT_SECRET : "";
 
-  const result = jwt.verify(token.token, secret, (err: VerifyErrors | null, decoded: string | JwtPayload | undefined) => {
-   
-    if (err) {
-       return {
-        msg:err.message,
-        isValid:false
-       }
-        
-
-    } else if (decoded) {
-      return  {
-             isValid:true
-      }
-    } 
-
-});
-
-
+  const result = await tokenVerifier(token.token)
 
 return new Response(JSON.stringify({
   result

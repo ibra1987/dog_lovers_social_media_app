@@ -5,11 +5,12 @@ const postsUri = "/api/posts"
 
 
 export const addPost =async(formdata:FormData)=>{
- const response = await axios.post(postsUri,{
-    data:formdata,
+ const response = await axios.post(postsUri,formdata,{
+   
     headers:{
         "Content-Type":"multipart/form-data"
-    }
+    },
+    
     
  })
 

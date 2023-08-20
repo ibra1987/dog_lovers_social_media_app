@@ -21,7 +21,6 @@ export type inputProps={
  export type Post = {
     postContent:string,
     postMedia:File[],
-    user:string
  }
 
 export type User = z.infer<typeof UserSchema>

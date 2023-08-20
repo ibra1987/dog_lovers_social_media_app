@@ -2,7 +2,6 @@
 import MediaUpload from "./MediaUpload";
 import { useState } from "react";
 import { Post } from "@/types";
-import axios from "axios";
 import { addPost } from "@/http/post";
 const inputClass =
   " rounded-md p-2 bg-[#fcfbfb] outline-none break-words resize-none overflow-hidden font-medium";
@@ -10,8 +9,8 @@ const inputClass =
 function AddPost() {
   const [post,setPost]=useState<Post>({
     postContent:"",
-    postMedia:[],
-    user:"a"
+    postMedia:  [],
+   
   })
   const [error,setError]=useState({
     path:"",
@@ -24,6 +23,7 @@ function AddPost() {
     const files = e.target instanceof HTMLInputElement ? e.target.files  :undefined ;
     
     
+    
      if(name ==="postContent" && value.length>150) {
       setError({
         path:"postContent",
@@ -32,18 +32,31 @@ function AddPost() {
       return
      }
 
+   
      
     
      setError({path:"",msg:""})
-    setPost({
-      ...post,
-      [name]:value
-    })
-  };
+      if(name === "postMedia"){
+        const media = Array.from(files as unknown as File [])
+        setPost({
+          ...post,
+          [name]: [...post.postMedia, ...media]
+        })
+      };
+      if(name === "postContent"){
+        setPost({
+          ...post,
+          [name]:value,
+          
+        })
+      };
+
+}
+  
   const onSubmit=async(e:React.FormEvent<HTMLFormElement>)=>{
     e.preventDefault()
     
-   if(!post.postContent || !post.user){
+   if(!post.postContent){
     setError({
       path:"postContent",
       msg:"You can not publish an empty post"
@@ -52,13 +65,21 @@ function AddPost() {
    }// end if 
 
    const formdata = new FormData()
-   formdata.append("post",JSON.stringify(post))
+   formdata.append("postContent",post.postContent)
+   
+   post.postMedia?.forEach((media:File)=>formdata.append('postMedia',media))
+
 
    try {
     const response = await addPost(formdata)
     
-   } catch (error) {
-    
+    if(response.data.success){
+      console.log(response.data.post)
+    }
+   } catch (error:any) {
+     if(error.errors){
+      console.log(error.errors)
+     } 
    }
   
 
