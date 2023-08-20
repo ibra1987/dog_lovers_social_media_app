@@ -8,7 +8,7 @@ import { Credentials } from "@/types";
 import { SingnInSchema } from "@/zodScheams";
 import { useAuthState } from "@/state";
 
-const inputClass ="w-full flex  p-2 outline-none  border border-gray-400 border-2"
+const inputClass ="w-full flex  p-2 outline-none  border border-gray-200 border-2"
 const labelClass = " w-full mb-2  text-left text-black font-medium"
 const inputDivClass = "w-full  p-2 flex flex-col  justify-center  items-center  "
 
@@ -144,11 +144,11 @@ const inputDivClass = "w-full  p-2 flex flex-col  justify-center  items-center  
                     <div className="w-full flex justify-start items-center text-red-500">{ credentials.password.message}</div>
 
         </div>
-        <div className={"w-full p-2  "}>
+        <div className={"w-full p-2 my-2  flex justify-center  "}>
           <button
           disabled={loading}
           onClick={onSubmit}
-        className="w-full bg-yellow-400 m-2 p-2 cursor-pointer border border-white hover:border-yellow-400 text-white font-bold tracking-wider"
+        className="w-full bg-reddish p-3 cursor-pointer tracking-widest border border-white hover:border-reddish hover:underline text-white font-bold "
             type="button"
           >
               {loading ? "Processing" :" Login"}

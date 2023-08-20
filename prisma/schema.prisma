@@ -15,10 +15,16 @@ model User {
   fullName String  @db.VarChar(99)
   email    String  @unique @db.VarChar(99)
   password String
-  bio      String? @default("") @db.VarChar(255)
   posts    Post[]
 
   @@index([email, id])
+}
+
+model Profile {
+  id String @id @default(uuid())
+  bio String? @db.VarChar(250) @default("")
+  website String @default("")
+  
 }
 
 model Media {
@@ -26,6 +32,7 @@ model Media {
   url    String @unique
   post   Post   @relation(fields: [postId], references: [id], onDelete: SetDefault)
   postId String @unique
+
 }
 
 model Post {

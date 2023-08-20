@@ -10,7 +10,7 @@ function LargeScreenMenu() {
   <ul className="w-full flex   justify-end items-center space-x-8 px-2" >
     {menulinks.map((link:link,index:number)=>{
         return <>
-        {link.name === "Sign Up" ? <li className="p-2 px-8 bg-[#CDF0EA] text-white rounded-full cursor-pointer hover:bg-[#b6f2e9] duration-100 transition " key={`${link.name}-${index}`}>
+        {link.name === "Sign Up" ? <li className="p-2 px-8 bg-cyannish text-white rounded-full cursor-pointer hover:bg-[#399592] duration-100 transition " key={`${link.name}-${index}`}>
           <Link href={link.path} >{link.name}</Link>
         </li>:<li className="p-2 border-b border-white duration-200 transition hover:border-gray-200" key={`${link.name}-${index}`}>
           <Link href={link.path} >{link.name}</Link>
